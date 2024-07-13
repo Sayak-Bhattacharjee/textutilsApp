@@ -52,13 +52,13 @@ export default function Textarea(props) {
           ></textarea>
         </div>
         {/* <button className="btn btn-primary my-3" onClick={textAnalytics}>Text Analytics</button> */}
-        <button className="btn btn-primary my-3" onClick={handleUcClick}>
+        <button disabled={text ? text.length===0 : true} className="btn btn-primary my-3" onClick={handleUcClick}>
           Convert to Upper Case{" "}
         </button>
-        <button className="btn btn-primary my-3 mx-3" onClick={handleLcClick}>
+        <button disabled={text ? text.length===0 : true} className="btn btn-primary my-3 mx-3" onClick={handleLcClick}>
           Convert to Lower Case{" "}
         </button>
-        <button className="btn btn-primary my-3 mx-3" onClick={makeItTalk}>
+        <button disabled={text ? text.length===0 : true} className="btn btn-primary my-3 mx-3" onClick={makeItTalk}>
           Speak
         </button>
       </div>
@@ -74,13 +74,13 @@ export default function Textarea(props) {
         <h3>You text analytics is below:</h3>
         <p>
           {text
-          ? text.trim().split(" ").length
+          ? text.trim().split("/\s+/").length
           : 0} words and {text ? text.length : 0}{" "}
           characters
         </p>
         <p>
           Avg. time to read:{" "}
-          {Math.ceil((30 / 125) * (text ? text.split(" ").length : 0))} seconds
+          {Math.ceil((30 / 125) * (text ? text.split("/\s+/").length : 0))} seconds
         </p>
         <h3>Preview</h3>
         <p>{text ? text : `You will get your text preview here`}</p>
